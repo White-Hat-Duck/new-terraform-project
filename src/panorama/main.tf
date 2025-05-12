@@ -76,7 +76,11 @@ module "panorama" {
   vpc_security_group_ids = [module.security_vpc.security_group_ids["panorama-mgmt"]]
   panorama_iam_role      = var.panorama_create_iam_instance_profile == false ? null : aws_iam_instance_profile.panorama_instance_profile[0].name
 
-  global_tags = var.global_tags
+global_tags = {
+  Environment = "prod"
+  Project     = "vmseries"
+  Owner       = "security"
+}
 
   depends_on = [
     aws_iam_instance_profile.panorama_instance_profile

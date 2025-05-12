@@ -191,7 +191,11 @@ module "bootstrap" {
   iam_instance_profile_name = "${var.name_prefix}vmseries_instance_profile${each.value.instance}"
 
   prefix      = var.name_prefix
-  global_tags = var.global_tags
+  global_tags = {
+  Environment = "prod"
+  Project     = "vmseries"
+  Owner       = "security"
+  }
 
   bootstrap_options     = merge({ for k, v in each.value.common.bootstrap_options : k => v if v != null }, { hostname = "${var.name_prefix}${each.key}" })
   source_root_directory = "files"
