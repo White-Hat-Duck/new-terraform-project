@@ -6,7 +6,7 @@ variable "name" {
 }
 
 variable "global_tags" {
-  description = <<-EOF
+  description = " "
   A map of tags to assign to the resources.
   If configured with a provider `default_tags` configuration block present, tags with matching keys will overwrite those defined at the provider-level."
   EOF
